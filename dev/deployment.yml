@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-app
+  name: nginx-app-dev
 spec:
   replicas: 3
   strategy:
@@ -11,11 +11,11 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-dev-app
   template:
       metadata:
         labels:
-          app: nginx
+          app: nginx-dev-app
       spec:
         containers:
         - name: nginx
