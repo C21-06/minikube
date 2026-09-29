@@ -14,7 +14,7 @@ spec:
         command:
         - sh
         - -c
-        - psql -h postgres-0.postgres-headless.dev.svc.cluster.local -U postgres -c "\dt"
+        - psql -h postgres-0.postgres-headless.dev.svc.cluster.local -U postgres -d mydb -c "\dt"
         env:
         - name: PGPASSWORD
           value: "mypassword"
