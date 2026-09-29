@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-check
+  namespace: dev
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: db-check
+        image: postgres:15
+        command:
+        - sh
+        - -c
+        - psql -h postgres-0.postgres-headless.dev.svc.cluster.local -U postgres -c "\dt"
+        env:
+        - name: PGPASSWORD
+          value: "mypassword"
